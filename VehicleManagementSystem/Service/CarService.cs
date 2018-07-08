@@ -10,16 +10,19 @@ namespace VehicleManagementSystem.Service
     public class CarService : IService<Car>
     {
         private IRepository<Car> _repository;
+
         public CarService()
         {
-            if(_repository == null)
-            {
-                _repository = new CarRepository();
-            }
+            _repository = new CarRepository();
         }
-        public void Add(Car model)
+        public CarService(IRepository<Car> repository)
+        {           
+            _repository = repository;            
+        }
+        public int Add(Car model)
         {
-            _repository.Add(model);
+          var id  = _repository.Add(model);
+          return id;
         }
 
         public Car GetDateById(int id)
@@ -28,7 +31,7 @@ namespace VehicleManagementSystem.Service
             return model;
         }
 
-        public IEnumerable<Car> GetData()
+        public ICollection<Car> GetData()
         {
            var carData = _repository.Get();
            return carData;

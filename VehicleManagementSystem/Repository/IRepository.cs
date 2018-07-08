@@ -9,9 +9,9 @@ namespace VehicleManagementSystem.Repository
 {
     public interface IRepository<T>
     {
-        void Add(T model);
+        int Add(T model);
         void Update(T model);
-        IEnumerable<T> Get();
+        ICollection<T> Get();
         T GetDataById(int id);
     }
 }

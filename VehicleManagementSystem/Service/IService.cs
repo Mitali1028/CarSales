@@ -9,8 +9,8 @@ namespace VehicleManagementSystem.Service
 {
    public interface IService<T>
     {
-        void Add(T model);
-        IEnumerable<T> GetData();
+        int Add(T model);
+        ICollection<T> GetData();
         T GetDateById(int id);
         void Update(T model);
     }

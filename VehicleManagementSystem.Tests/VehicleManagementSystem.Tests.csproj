@@ -87,6 +87,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\CarControllerTest.cs" />
+    <Compile Include="Repository\CarRepositoryTest.cs" />
+    <Compile Include="Service\CarServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

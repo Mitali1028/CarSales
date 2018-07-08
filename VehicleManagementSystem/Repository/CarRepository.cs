@@ -38,27 +38,32 @@ namespace VehicleManagementSystem.Repository
             }
         };
 
-        public void Add(Car model)
+        public int Add(Car model)
         {
             if (model != null)
             {
                 listOfCars.Add(model);
             }
+            return model.Id;
         }
 
-        public IEnumerable<Car> Get()
+        public ICollection<Car> Get()
         {
             var model = from r in listOfCars
                         select r;
-            return model;
+            return model.ToList();
         }
 
         public Car GetDataById(int id)
         {
-            var model = (from r in listOfCars
-                         where r.Id == id
-                         select r).FirstOrDefault();
-            return model;
+            if (id > 0)
+            {
+                var model = (from r in listOfCars
+                             where r.Id == id
+                             select r).FirstOrDefault();
+                return model;
+            }
+            return null;
         }
 
         public void Update(Car model)

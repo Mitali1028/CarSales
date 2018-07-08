@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using VehicleManagementSystem.Repository;
 using VehicleManagementSystem.Service;
 
 namespace VehicleManagementSystem.Models
@@ -11,6 +12,10 @@ namespace VehicleManagementSystem.Models
         public CarController()
         {
             _carService = new CarService();
+        }
+        public CarController(IService<Car> carService)
+        {
+            _carService = carService;
         }
 
         [HttpGet]
