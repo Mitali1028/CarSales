@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using VehicleManagementSystem.Repository;
 using VehicleManagementSystem.Service;
@@ -11,7 +12,7 @@ namespace VehicleManagementSystem.Models
 
         public CarController()
         {
-            _carService = new CarService();
+          _carService = new CarService();
         }
         public CarController(IService<Car> carService)
         {
@@ -33,8 +34,14 @@ namespace VehicleManagementSystem.Models
         [HttpGet]
         public ActionResult Index()
         {
-            var model = _carService.GetData();
-            return View(model);
+            try {
+                var model = _carService.GetData();
+                return View(model);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         [HttpGet]
         public ActionResult Edit(int id)
